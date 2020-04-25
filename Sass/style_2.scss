@@ -1,0 +1,57 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.wrap { 
+    width:100vw;
+    height:100vh;
+    background-color:#222222;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.content {      
+    width:auto;
+    height: auto;
+}
+p {
+    font-size: 20px;
+    color: #fff;
+    line-height: 3em;
+}
+/*以下フェードイン表示の指定*/
+.fadein {
+    //要素の透明度を指定➡最初は0
+    opacity: 0;
+    /*
+      @keyframes fadein➡ここで付けた「fadein」名前と関連付けて動きを付ける
+      6s➡6秒
+      ease➡アニメーションの速度
+      forwards➡@keyframesの100%の状態を維持の指示、要するに終了時点は透明度をつけない状態を維持。
+    */
+    animation: fadein 6s ease forwards;
+}
+/*
+@keyframesに半角スペースを空けて「fadein」と記述することで、上記の「animation」プロパティと関連付けさせている
+@keyframesアニメーションが開始～終了するまでどのようなアニメーションをするか指定
+100%の場合は終了時を示していて、終了時点では透明度はない、文字が現れるように指定
+*/
+@keyframes fadein {
+    100% {  opacity: 1;}
+}
+/*以下遅延の指定*/
+/*
+.txt01～07に対して指定
+3秒間隔でアニメーション実行を指定
+最初は1秒後、その後は3秒間隔でアニメーション実行する。
+*/
+.txt01 {animation-delay: 1s;}
+.txt02 {animation-delay: 6s;}
+.txt03 {animation-delay: 11s;}
+.txt04 {animation-delay: 16s;}
+.txt05 {animation-delay: 21s;}
+.txt06 {animation-delay: 26s;}
+.txt07 {animation-delay: 31s;}
+.txt08 {animation-delay: 34s;}

@@ -1,0 +1,194 @@
+
+@charset "utf-8";
+
+/*========= base ==========*/
+
+html {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Yu Gothic", "遊ゴシック",  YuGothic, "游ゴシック体", sans-serif ;
+    font-weight: 500;
+    color: #333333;
+    line-height: 2.0;
+}
+
+h2,h3,h4,h5 {
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    width: 100px;
+    vertical-align: bottom;
+}
+
+ul,li,dl,dt,dd {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: #000000;
+    &:hover {
+        transition: .3s ease-out;
+        opacity: 0.6;    
+    }
+}
+
+section {
+    margin-bottom: 120px;
+}
+
+.content-wrapper {
+    width: 1400px;
+    margin: 0 auto;
+}
+
+.copyright {
+    //font色格納変数
+    $f_color_rgbwhite: rgb(255, 255, 255);
+    color: $f_color_rgbwhite;
+    //背景色格納変数
+    $bgcolor_black:  #333;
+    background-color:$bgcolor_black;
+    p {
+        font-size: 0.75rem;
+        text-align: center;
+        margin: 0;
+        line-height: 100px;
+    }
+}
+
+
+/* =============form(お問い合わせ)============= */
+.form {
+    dl {
+        //縦並びに
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        
+        //上下に余白
+        padding: 20px 0;
+        //dotted：点線
+        border-bottom: 1px dotted #676767;
+        /*最初のdatelistに対してborder*/
+        &:first-of-type {
+            border-top: 1px dotted #676767;
+        }
+    }
+}
+
+dt.error {
+    color: red;
+}
+
+/*入力項目の要素のスタイル指定*/
+.form {
+    /*変数宣言*/
+    $f_color_gray: #777;
+    //入力項目欄に対して
+    dd input,select,textarea {
+        font-size: 1rem;
+        //都道府県の文字色をグレイ
+        color: $f_color_gray;
+        //input要素の枠色
+        border: none; //1px solid #555;
+        //input要素の背景色グレイ
+        background-color: #dbdbdb;
+        box-sizing: border-box;
+        border-radius: 3px;
+    }  
+}
+
+/*全体の項目名に対して*/
+.form dt {
+    //dtの部分のみ横幅を広げる
+    //textboxと幅を合わせる
+    width: 350px;
+    padding: 20px 0 20px 0;
+    box-sizing: border-box;
+    line-height: 1em;
+    span {
+        padding-left: 5px;
+        color: red;
+        dd {
+            width: calc(100% - 300px);
+            box-sizing: border-box;
+        }
+    } 
+}
+
+/*全体のinput select に対して*/
+.form dd input,select {
+    line-height: 40px;
+    height: 40px;
+    padding: 0 20px;
+}
+
+/*テキストエリアに対して*/
+.form {
+    dd {
+        textarea {
+        height: 140px;
+        line-height: 2em;
+        padding: 0 20px 20px 20px;
+        width: 200%;
+        }
+    }
+}
+
+dl.name {
+    //横幅の指定が無いとmargin指定がされないので注意
+    width: 74%;
+    margin: 0 auto;
+}
+/*氏名行の指定*/
+dl.name dd {
+    //左に余白
+    padding: 5px 10px;
+    
+    //氏名行のinput幅を350px
+    input {
+        width: 350px;
+        
+        //左inputの右側に余白
+        &:first-of-type {
+            margin: 0 auto;
+        }
+    } 
+}
+
+//送信bottun
+.form-button  {
+    //中央寄せ
+    display: flex;
+    justify-content: center;
+    margin: 20px auto 300px auto;
+    input {
+        display: block;
+        text-align: center;
+        color: #444;
+        background-color: #dbdbdb;
+        cursor: pointer;
+        transition: all .3s ease;
+        width: 250px;
+        height: 40px;
+        border-radius: 50px;
+        &:hover{
+            background-color:transparent;
+            background-color: #353535;
+            color: #fff;
+            transition: .3s ease all
+        }
+    }
+}
