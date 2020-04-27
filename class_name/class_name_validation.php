@@ -1,6 +1,7 @@
 <?php
 /*---------------------------------------------------------------
 【機能】:氏名のバリデーションチェックを行う
+        文字数チェックを行う(最大10文字)
 【引数】:HTMLから送信されてくるname属性をキーにしたuser_name
 【戻り値】:入力値がない場合=>エラー
 　　　　　 正しい入力値=>入力値を返す
@@ -16,46 +17,42 @@ class name_validation {
     public function validation($user_name){
         //値の初期化
         //現状配列でデータを比較しているが、マスタで管理にする。
+        /*
         $check_flg = "";
-        /*-------------------------------------
-        入力値と一致させる値を以下に入れてください
-        -------------------------------------*/
-        //妻へ
+        //入力値と一致させる値を以下に入れてください
         $const_name = [
             "",
             "",
             ""
         ];
-        //娘へ
+        
         $const_name_2 = [
             "",
             "",
             "",
             ""
         ];
-        
+        */
         //置き換えする検索文字列　半角空白、全角空白
         $search = array(" ","　");
         $replace = "";
         //str_replaceで空白が存在すれば空白削除
         $user_name = str_replace($search,$replace,$user_name);
-        //var_dump();
-        if (empty($user_name) ) {
-            //空の場合エラー
+        
+        /*---------------------------------------------
+        ・空の場合はエラー:-1
+        ・改行以外の制御文字及び最大文字数のチェック(正規表現)
+        10文字以内のチェック:0
+        ・上記以外画面遷移：1
+        ---------------------------------------------*/
+        if (empty($user_name) ) {    
             $check_flg = "-1";
             return $check_flg;
-            //$const_nameと値が一致すれば次画面遷移
-        } elseif (in_array($user_name,$const_name)){
+        } elseif (preg_match('/\A[\r\n[:^cntrl:]]{1,10}\z/u', $user_name) === 0) {
             $check_flg = "0";
             return $check_flg;
-            
-        } elseif ((in_array($user_name,$const_name_2))) {
-            $check_flg = "1";
-            return $check_flg;
-        //名前が異なるエラーを表示
         } else {
-            $check_flg = "2";
-            return $check_flg;
+            return $check_flg = "1";
         }
     }
 }

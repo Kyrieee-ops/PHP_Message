@@ -168,6 +168,18 @@ dl.name dd {
     } 
 }
 
+dl.age {
+    width: 74%;
+    margin: 0 auto;
+}
+dl.age dd {
+    //左に余白
+    padding: 5px 10px;
+    //氏名行のinput幅を350px
+    input {
+        width: 30px;
+}
+
 //送信bottun
 .form-button  {
     //中央寄せ
