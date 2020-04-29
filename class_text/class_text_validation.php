@@ -1,39 +1,38 @@
 <?php
 /*---------------------------------------------------------------
-【機能】:年齢値のバリデーションチェックを行う
+【機能】:文章値のバリデーションチェックを行う
         桁数チェックを行う(最大120バイト)
-        2行目以降は改行以外の制御文字及び最大文字数のチェックを行う
-【引数】:HTMLから送信されてくるage属性をキーにしたage
-【戻り値】: -1 1行目空文字エラー
-            0 1行目が未入力、2行目が入力されている場合　エラー
-            1 2行目が未入力、3行目が入力されている場合　エラー
-            2 3行目が未入力、4行目が入力されている場合  エラー
-            3 True         
-エラーメッセージ：「〇行目が入力されていません。」
+【引数】:HTMLから送信されてくるtext_1~text_4属性をキーにした値を受け取る
+【戻り値】: -1 空文字エラー
+            0 改行以外の制御文字及び最大文字数のチェック,120バイトを超える場合はエラー
+            1 True
 ---------------------------------------------------------------*/
 //プロパティ設定
 
 //index.phpと同じ階層に見立てたnamespaceを記述
 //非修飾形式
-namespace vendor\php_message\class_age\validation;
-class age_validation {
+namespace vendor\php_message\class_text\validation;
+class text_validation {
 
     //値の存在チェック
     //is_numeric等で数値であるかをチェックする
     public function validation($val){
-        //検索文字列 配列変数初期化
+        //検索文字列変数初期化
         $search = [];
-
+        
         //置き換えする検索文字列　半角空白、全角空白
         $search = [" ","　"];
         $replace = "";
         //str_replaceで空白が存在すれば空白削除
-        $val = str_replace($search,$replace,$val);
-        
+        //ここで繰り返しで値の空白除去を行う
+        for ($i = 0; $i < count($val); $i++) {
+            $val = str_replace($search,$replace,$val);
+        }
+
         /*---------------------------------------------
         ・空の場合はエラー:-1
         ・改行以外の制御文字及び最大文字数のチェック(正規表現)
-        3文字以内のチェック かつ　文字列が整数であるかをチェック:0
+        120文字以内のチェック:0
         ・上記以外画面遷移：1
         ---------------------------------------------*/
         //三項演算子で書いても複雑化しそうなので配列でできるかを考慮
@@ -43,7 +42,7 @@ class age_validation {
         if (empty($val)) {    
             $check_flg = "-1";
             return $check_flg;
-        } elseif (preg_match('/\A[\r\n[:^cntrl:]]{1,3}\z/u', $val) === 0 && is_numeric($val)) {
+        } elseif (preg_match('/\A[\r\n[:^cntrl:]]{1,120}\z/u', $val)) {
             $check_flg = "0";
             return $check_flg;
         } else {

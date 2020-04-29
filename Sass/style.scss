@@ -43,7 +43,7 @@ a {
 }
 
 section {
-    margin-bottom: 120px;
+    //margin-bottom: 120px;
 }
 
 .content-wrapper {
@@ -83,7 +83,7 @@ section {
         border-bottom: 1px dotted #676767;
         /*最初のdatelistに対してborder*/
         &:first-of-type {
-            border-top: 1px dotted #676767;
+        border-top: 1px dotted #676767;
         }
     }
 }
@@ -133,6 +133,7 @@ dt.error {
     line-height: 40px;
     height: 40px;
     padding: 0 20px;
+    margin-right: 5px;
 }
 
 /*テキストエリアに対して*/
@@ -177,15 +178,26 @@ dl.age dd {
     padding: 5px 10px;
     //氏名行のinput幅を350px
     input {
-        width: 30px;
+        width: 100px;
+        text-align: center;
+    }
 }
 
+dl.text1 {
+    width: 74%;
+    margin: 0 auto;
+    input {
+        width: 900px;
+    }
+}
+
+
 //送信bottun
-.form-button  {
+.form-button {
     //中央寄せ
     display: flex;
     justify-content: center;
-    margin: 20px auto 300px auto;
+    margin: 20px auto 20px auto;
     input {
         display: block;
         text-align: center;

@@ -14,7 +14,7 @@ namespace vendor\php_message\class_name\validation;
 class name_validation {
 
     //値の存在チェック
-    public function validation($user_name){
+    public function validation($val){
         //値の初期化
         //現状配列でデータを比較しているが、マスタで管理にする。
         /*
@@ -34,10 +34,10 @@ class name_validation {
         ];
         */
         //置き換えする検索文字列　半角空白、全角空白
-        $search = array(" ","　");
+        $search = [" ","　"];
         $replace = "";
         //str_replaceで空白が存在すれば空白削除
-        $user_name = str_replace($search,$replace,$user_name);
+        $val = str_replace($search,$replace,$val);
         
         /*---------------------------------------------
         ・空の場合はエラー:-1
@@ -45,10 +45,10 @@ class name_validation {
         10文字以内のチェック:0
         ・上記以外画面遷移：1
         ---------------------------------------------*/
-        if (empty($user_name) ) {    
+        if (empty($val) ) {    
             $check_flg = "-1";
             return $check_flg;
-        } elseif (preg_match('/\A[\r\n[:^cntrl:]]{1,10}\z/u', $user_name) === 0) {
+        } elseif (preg_match('/\A[\r\n[:^cntrl:]]{1,10}\z/u', $val) === 0) {
             $check_flg = "0";
             return $check_flg;
         } else {

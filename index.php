@@ -12,11 +12,14 @@ function h($str) {
 $name_valied_path = dirname(__DIR__).'/php_message/class_name/class_name_validation.php';
 //ageクラスの指定パス変数
 $age_valied_path = dirname(__DIR__).'/php_message/class_age/class_age_validation.php';
-
+//textクラスの指定パス変数
+$text_valied_path = dirname(__DIR__).'/php_message/class_text/class_text_validation.php';
 //氏名バリデーションクラスを読み込む
 include($name_valied_path);
 //年齢バリデーションクラスを読み込む
 include($age_valied_path);
+//文章バリデーションクラスを読み込む
+include($text_valied_path);
 
 // 企業名\フォルダ\クラスフォルダ as 別名
 use vendor\php_message\class_name as n_validate;
@@ -28,43 +31,50 @@ use vendor\php_message\class_age as a_validate;
 //namespace ageのvalidationメソッドに接続 
 $age_validate = new a_validate\validation\age_validation;
 
+use vendor\php_message\class_text as t_validate;
+//namespace ageのvalidationメソッドに接続 
+$text_validate = new t_validate\validation\text_validation;
+
  /*---------------------------------------------
  送信ボタンを押した(postされた)場合にバリデーションチェックを行う
  -1：空のエラー
  0：画面遷移
  1：入力値が正しくないエラー表示
  ---------------------------------------------*/
- if (!empty($_POST)){
-    $user_name = $_POST['user_name'];
-    $age = $_POST['age'];
+ if (!empty($_POST['person_information'])){
+    //HTMLのname属性配列変数初期化
+    $person_information = [];
+    //name属性を配列で受け取り配列変数へ格納
+    $person_information = $_POST['person_information'];
+
     //値が空ではない場合に次画面遷移なのでsession変数に値を格納
-    $_SESSION["user_name"] = $_POST['user_name'];
-    $_SESSION["age"] = $_POST['age'];
+    $_SESSION['person_information'] = $person_information;
+    /*
+    $_SESSION['user_name'] = $_POST['user_name'];
+    $_SESSION['age'] = $_POST['age'];
+    $_SESSION['text'] = $_POST['text'];
+    */
     //値の初期化
-    $check_flg_result ="";
-    $check_flg_result_2 ="";
+    $check_flg_name ="";
+    $check_flg_age ="";
+    $check_flg_text = "";
 
-    $check_flg_result = $name_validate->validation($user_name);
-
-    $check_flg_result_2 = $age_validate->validation($age);
- }
+    $check_flg_name = $name_validate->validation($person_information['user_name']);
+    $check_flg_age = $age_validate->validation($person_information['age']);
+    $check_flg_text = $text_validate->validation($person_information);
+}
  
  
  /*----------------------------------------
  check_flgの値によって画面遷移先を変える
- 1⇒message.htmlへ
- 2⇒message2.htmlへ
+ 1⇒message.phpへ
+ 
  ----------------------------------------*/
- if ($check_flg_result === "1" && $check_flg_result_2 === "1") {
+ if ($check_flg_name === "1" && $check_flg_age === "1" /*&& $check_flg_text === "1"*/) {
     header('Location: message.php');
     exit();
  }
- 
- if ($check_flg_result === "2") {
-    header('Location: message_2.php');
-    exit();
- }
- 
+  
 ?>
 
 <!DOCTYPE html>
@@ -83,31 +93,75 @@ $age_validate = new a_validate\validation\age_validation;
             <form class="content-wrapper">
                 <!--名前-->
                 <dl class="name">
-                <?php if ($check_flg_result === "-1"):?>
+                <?php if ($check_flg_name === "-1"):?>
                 <dt class="error"><?php echo "名前が入力されていません"; ?></dt>
-                <?php elseif($check_flg_result === "0") : ?>
+                <?php elseif($check_flg_name === "0") : ?>
                     <dt class="error"><?php echo "不正な入力です。最大文字数は11文字です。また、制御文字は使用できません。"; ?></dt>
                 <?php endif; ?>
                     <label for="lblname1"><dt>氏名<span>*</span></dt></label>
                     <dd>
-                        <input id="lblname1" type="text" name="user_name" placeholder="例：山田太郎" value="<?php echo h($user_name)?>">
+                        <input id="lblname1" type="text" name="person_information[user_name]" placeholder="例：山田太郎" value="<?php echo h($person_information['user_name'])?>">
                     </dd>
                 </dl>
                 <!--/名前-->
                 <!--年齢-->
                 <!--数値のみ入力-->
                 <dl class="age">
-                <?php if ($check_flg_result_2 === "-1"):?>
+                <?php if ($check_flg_age === "-1"):?>
                 <dt class="error"><?php echo "年齢が入力されていません"; ?></dt>
-                <?php elseif($check_flg_result_2 === "0") : ?>
+                <?php elseif($check_flg_age === "0") : ?>
                     <dt class="error"><?php echo "不正な入力です。最大文字数は3文字です。また、制御文字は使用できません。"; ?></dt>
                 <?php endif; ?>
                 <label for="lblname2"><dt>年齢<span>*</span></dt></label>
                 <dd>
-                    <input id="lblname2" type="text" name="age" value="<?php echo h($age);?>">歳
+                    <input id="lblname2" type="text" name="person_information[age]" value="<?php echo h($person_information['age']);?>">歳
                 </dd>
                 </dl>
                 <!--/年齢-->
+                <!--文章1-->
+                <dl class="text1">
+                    <!--1行目-->
+                    <?php if ($check_flg_text === "-1"):?>
+                        <dt class="error"><?php echo "文書が入力されていません"; ?></dt>
+                    <?php elseif($check_flg_text === "0") : ?>
+                        <dt class="error"><?php echo "不正な入力です。最大文字数は120文字です。また、制御文字は使用できません。"; ?></dt>
+                    <?php endif; ?>
+                    <label for="lblname3"><dt>表示するメッセージ1<span>*</span></dt></label>
+                    <dd>
+                        1行目：<input id="lblname3" type="text" name="person_information[text_1]" placeholder="" value="<?php echo h($person_information['text_1'])?>">
+                    </dd>
+                    <!--2行目-->
+                    <?php if ($check_flg_text === "-1"):?>
+                        <dt class="error"><?php echo "文書が入力されていません"; ?></dt>
+                    <?php elseif($check_flg_text === "0") : ?>
+                        <dt class="error"><?php echo "不正な入力です。最大文字数は120文字です。また、制御文字は使用できません。"; ?></dt>
+                    <?php endif; ?>
+                    <label for="lblname4"><dt>表示するメッセージ2<span>*</span></dt></label>
+                    <dd>
+                        2行目：<input id="lblname4" type="text" name="person_information[text_2]" placeholder="" value="<?php echo h($person_information['text_2'])?>">
+                    </dd>
+                    <!--3行目-->
+                    <?php if ($check_flg_text === "-1"):?>
+                        <dt class="error"><?php echo "文書が入力されていません"; ?></dt>
+                    <?php elseif($check_flg_text === "0") : ?>
+                        <dt class="error"><?php echo "不正な入力です。最大文字数は120文字です。また、制御文字は使用できません。"; ?></dt>
+                    <?php endif; ?>
+                    <label for="lblname5"><dt>表示するメッセージ3<span>*</span></dt></label>
+                    <dd>
+                        3行目：<input id="lblname5" type="text" name="person_information[text_3]" placeholder="" value="<?php echo h($person_information['text_3'])?>">
+                    </dd>
+                    <!--4行目-->
+                    <?php if ($check_flg_text === "-1"):?>
+                        <dt class="error"><?php echo "文書が入力されていません"; ?></dt>
+                    <?php elseif($check_flg_text === "0") : ?>
+                        <dt class="error"><?php echo "不正な入力です。最大文字数は120文字です。また、制御文字は使用できません。"; ?></dt>
+                    <?php endif; ?>
+                    <label for="lblname5"><dt>表示するメッセージ4
+                        <span>*</span></dt></label>
+                    <dd>
+                        4行目：<input id="lblname5" type="text" name="person_information[text_4]" placeholder="" value="<?php echo h($person_information['text_4'])?>">
+                    </dd>
+                </dl>
             <!--form-button-->
             <section class="form-button"><input type="submit" maxlength="10" value="送信する">
             </section>

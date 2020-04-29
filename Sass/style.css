@@ -41,10 +41,6 @@ a:hover {
   opacity: 0.6;
 }
 
-section {
-  margin-bottom: 120px;
-}
-
 .content-wrapper {
   width: 1400px;
   margin: 0 auto;
@@ -131,6 +127,7 @@ dt.error {
   line-height: 40px;
   height: 40px;
   padding: 0 20px;
+  margin-right: 5px;
 }
 
 /*テキストエリアに対して*/
@@ -159,6 +156,29 @@ dl.name dd input:first-of-type {
   margin: 0 auto;
 }
 
+dl.age {
+  width: 74%;
+  margin: 0 auto;
+}
+
+dl.age dd {
+  padding: 5px 10px;
+}
+
+dl.age dd input {
+  width: 100px;
+  text-align: center;
+}
+
+dl.text1 {
+  width: 74%;
+  margin: 0 auto;
+}
+
+dl.text1 input {
+  width: 900px;
+}
+
 .form-button {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -166,7 +186,7 @@ dl.name dd input:first-of-type {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  margin: 20px auto 300px auto;
+  margin: 20px auto 20px auto;
 }
 
 .form-button input {

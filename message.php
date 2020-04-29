@@ -3,9 +3,8 @@
 session_start();
 
 //sessionで値を受け取る
-if  (isset($_SESSION["user_name"],$_SESSION["age"])) {
-  $user_name = $_SESSION["user_name"];
-  $age = $_SESSION["age"];
+if  (isset($_SESSION['person_information'])) {
+  $person_information = $_SESSION['person_information'];
 }
 
 //htmlspecialchars関数
@@ -30,13 +29,13 @@ function h($str) {
 <body>
     <div class="wrap">
         <div class="content">
-          <p class="fadein txt01"><?php echo h($user_name); ?>へ　誕生日おめでとう</p>
-          <p class="fadein txt02"><?php echo h($age);?>回目の誕生日だね!!　時間が経つのは早いものですね</p>
-          <p class="fadein txt03">いつもご飯作ってくれて、帰ってくると笑顔で迎えてくれて、ケンカはよくするけど、<?php echo h($user_name); ?>と出会ってから毎日楽しい生活です</p>
-          <p class="fadein txt04">今はコロナで大変な状況だし、なかなかお出かけできる時でもないけど、収束したらまた3人でお出かけしようね</p>
-          <p class="fadein txt05">誕生日プレゼント「なんでもいい」っていうからこんなことしかできないけど、せっかくなのでWebのお手紙を作ってみました</p>
-          <p class="fadein txt06">これからも末永くよろしくお願いします</p>
-          <p class="fadein txt07">Presented by Kyrieee</p>
+          <p class="fadein txt01"><?php echo h($person_information[2]); ?></p>
+          <p class="fadein txt02"><?php echo h($person_information[3]); ?></p>
+          <p class="fadein txt03"><?php echo h($person_information[4]); ?></p>
+          <p class="fadein txt04"><?php echo h($person_information[5]); ?></p>
+          <p class="fadein txt05"></p>
+          <p class="fadein txt06"></p>
+          <p class="fadein txt07">Presented by <?php echo h($user_name); ?></p>
           <p class="fadein txt08"><a href="index.php">戻る</a></p>
         </div>
         </div>   
