@@ -1,10 +1,12 @@
 <?php
 //sessionスタート
 session_start();
-
+//セッションの有効期限 60分に設定
+session_cache_expire(60);
 //sessionで値を受け取る
-if  (isset($_SESSION['person_information'])) {
+if  (isset($_SESSION['person_information'],$_SESSION['text_information'])) {
   $person_information = $_SESSION['person_information'];
+  $text_information = $_SESSION['text_information'];
 }
 
 //htmlspecialchars関数
@@ -29,13 +31,13 @@ function h($str) {
 <body>
     <div class="wrap">
         <div class="content">
-          <p class="fadein txt01"><?php echo h($person_information[2]); ?></p>
-          <p class="fadein txt02"><?php echo h($person_information[3]); ?></p>
-          <p class="fadein txt03"><?php echo h($person_information[4]); ?></p>
-          <p class="fadein txt04"><?php echo h($person_information[5]); ?></p>
+          <p class="fadein txt01"><?php echo h($text_information['text_1']); ?></p>
+          <p class="fadein txt02"><?php echo h($text_information['text_2']); ?></p>
+          <p class="fadein txt03"><?php echo h($text_information['text_3']); ?></p>
+          <p class="fadein txt04"><?php echo h($text_information['text_4']); ?></p>
           <p class="fadein txt05"></p>
           <p class="fadein txt06"></p>
-          <p class="fadein txt07">Presented by <?php echo h($user_name); ?></p>
+          <p class="fadein txt07">Presented by <?php echo h($person_information['user_name']); ?></p>
           <p class="fadein txt08"><a href="index.php">戻る</a></p>
         </div>
         </div>   

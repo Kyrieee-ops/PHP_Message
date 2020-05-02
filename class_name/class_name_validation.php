@@ -45,15 +45,17 @@ class name_validation {
         10文字以内のチェック:0
         ・上記以外画面遷移：1
         ---------------------------------------------*/
-        if (empty($val) ) {    
+        if (empty($val)) {
             $check_flg = "-1";
             return $check_flg;
-        } elseif (preg_match('/\A[\r\n[:^cntrl:]]{1,10}\z/u', $val) === 0) {
+        }
+        //値が改行以外の制御文字が入っている及び最大文字数11文字以上➡エラー
+        if (preg_match('/\A[\r\n[:^cntrl:]]{1,10}\z/u', $val)) {
             $check_flg = "0";
             return $check_flg;
-        } else {
-            return $check_flg = "1";
         }
+         //上記以外であればTrue
+         return $check_flg = "1";
     }
 }
 ?>

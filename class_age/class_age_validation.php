@@ -40,15 +40,17 @@ class age_validation {
         //$check_flg = (empty($val)) ? "-1":"";
         
         
-        if (empty($val)) {    
+        if (empty($val)) {
             $check_flg = "-1";
             return $check_flg;
-        } elseif (preg_match('/\A[\r\n[:^cntrl:]]{1,3}\z/u', $val) === 0 && is_numeric($val)) {
+        }
+        //値が改行以外の制御文字が入っている及び最大文字数4文字以上➡エラー
+        if (preg_match('/\A[\r\n[:^cntrl:]]{1,3}\z/u', $val)) {
             $check_flg = "0";
             return $check_flg;
-        } else {
-            return $check_flg = "1";
         }
+         //上記以外であればTrue
+         return $check_flg = "1";
     }
 }
 ?>
