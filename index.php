@@ -114,7 +114,7 @@ $text_validate = new t_validate\validation\text_validation;
                 <?php if ($check_flg_name === "-1"):?>
                 <dt class="error"><?php echo "名前が入力されていません"; ?></dt>
                 <?php elseif($check_flg_name === "0") : ?>
-                    <dt class="error"><?php echo "不正な入力です。最大文字数は11文字です。また、制御文字は使用できません。"; ?></dt>
+                    <dt class="error"><?php echo "不正な入力です。"; ?></dt>
                 <?php endif; ?>
                     <label for="lblname1"><dt>氏名<span>*</span></dt></label>
                     <dd>
