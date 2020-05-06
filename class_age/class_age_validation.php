@@ -30,13 +30,14 @@ class age_validation {
         /*---------------------------------------------
         ・空の場合または3文字を超える場合エラー:-1
         ・半角数字以外エラー:0
+        ・不正な入力エラー：9
         ・上記以外画面遷移：1
         ---------------------------------------------*/
         if (empty($val)) {
             $check_flg = "-1";
             return $check_flg;
         }
-
+        
         //3文字を超える場合エラー
         $text_count = 3;
         if (mb_strlen($val) > $text_count) {
@@ -44,9 +45,18 @@ class age_validation {
             return $check_flg;
         }
 
+        /*
+        //改行文字は不正入力エラー
+        $text_pattern_1 = '';
+        if (preg_match($text_pattern, $val)) {
+            $check_flg = "9";
+            return $check_flg;
+        }
+        */
+        
         //半角数字以外エラー
-        $text_pattern = '/^[0-9]+$/';
-        if (!preg_match($text_pattern, $val)) {
+        $text_pattern_2 = '/^[0-9]+$/';
+        if (!preg_match($text_pattern_2, $val)) {
             $check_flg = "0";
             return $check_flg;
         }
