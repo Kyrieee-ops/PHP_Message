@@ -6,6 +6,9 @@
 html {
     margin: 0;
     padding: 0;
+    //フォントの基準を10pxに指定
+    font-size: 62.5%;
+
 }
 
 body {
@@ -21,12 +24,12 @@ h2,h3,h4,h5 {
     margin: 0;
     padding: 0;
 }
-
+/*
 img {
     width: 100px;
     vertical-align: bottom;
 }
-
+*/
 ul,li,dl,dt,dd {
     margin: 0;
     padding: 0;
@@ -41,16 +44,17 @@ a {
         opacity: 0.6;    
     }
 }
-
+/*
 section {
-    //margin-bottom: 120px;
+    margin-bottom: 120px;
 }
-
+*/
+/*
 .content-wrapper {
     width: 1400px;
     margin: 0 auto;
 }
-
+*/
 .copyright {
     //font色格納変数
     $f_color_rgbwhite: rgb(255, 255, 255);
@@ -68,129 +72,98 @@ section {
 
 
 /* =============form(お問い合わせ)============= */
+.header-text {
+    //ヘッダーのテキストを真ん中寄せ
+    text-align: center;
+    font-size: 2.4rem;
+}
+
 .form {
-    dl {
-        //縦並びに
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        
-        //上下に余白
-        padding: 20px 0;
-        //dotted：点線
-        border-bottom: 1px dotted #676767;
-        /*最初のdatelistに対してborder*/
-        &:first-of-type {
-        border-top: 1px dotted #676767;
-        }
+    //フォーム～文字列すべてを真ん中寄せ
+    text-align: center; 
+     
+}
+/* 名前inputboxの見出し */
+.name {
+    padding: 10px 0;
+    border-bottom: 1px dotted #676767;
+    dt {
+        font-size: 1.6rem;
     }
-}
-
-dt.error {
-    color: red;
-}
-
-/*入力項目の要素のスタイル指定*/
-.form {
-    /*変数宣言*/
-    $f_color_gray: #777;
-    //入力項目欄に対して
-    dd input,select,textarea {
-        font-size: 1rem;
-        //都道府県の文字色をグレイ
-        color: $f_color_gray;
-        //input要素の枠色
-        border: none; //1px solid #555;
-        //input要素の背景色グレイ
-        background-color: #dbdbdb;
-        box-sizing: border-box;
-        border-radius: 3px;
-    }  
-}
-
-/*全体の項目名に対して*/
-.form dt {
-    //dtの部分のみ横幅を広げる
-    //textboxと幅を合わせる
-    width: 350px;
-    padding: 20px 0 20px 0;
-    box-sizing: border-box;
-    line-height: 1em;
-    span {
-        padding-left: 5px;
+    .red {
         color: red;
-        dd {
-            width: calc(100% - 300px);
-            box-sizing: border-box;
-        }
-    } 
-}
-
-/*全体のinput select に対して*/
-.form dd input,select {
-    line-height: 40px;
-    height: 40px;
-    padding: 0 20px;
-    margin-right: 5px;
-}
-
-/*テキストエリアに対して*/
-.form {
-    dd {
-        textarea {
-        height: 140px;
-        line-height: 2em;
-        padding: 0 20px 20px 20px;
-        width: 200%;
-        }
     }
 }
 
-dl.name {
-    //横幅の指定が無いとmargin指定がされないので注意
-    width: 74%;
-    margin: 0 auto;
-}
-/*氏名行の指定*/
-dl.name dd {
-    //左に余白
-    padding: 5px 10px;
-    
-    //氏名行のinput幅を350px
-    input {
-        width: 350px;
-        
-        //左inputの右側に余白
-        &:first-of-type {
-            margin: 0 auto;
-        }
-    } 
+/* inputboxの大きさ指定 */
+.name dd input{
+    width: 250px;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+    background: #dbdbdb;
+    padding-left: 10px;
 }
 
-dl.age {
-    width: 74%;
-    margin: 0 auto;
+/* 年齢inputboxの見出し */
+.age {
+    padding: 10px 0;
+    border-bottom: 1px dotted #676767;
+    dt {
+        font-size: 1.6rem;
+    }
+    //span*の色指定
+    .red {
+    color: red;
+    }
 }
-dl.age dd {
-    //左に余白
-    padding: 5px 10px;
-    //氏名行のinput幅を350px
+
+.age dd {
+    font-size: 1.6rem;
     input {
         width: 100px;
+        height: 30px;
+        border-radius: 5px;
+        border: none;
+        background: #dbdbdb;
+        padding-left: 10px;
         text-align: center;
     }
+    span {
+        margin-left: 10px;
+    }
 }
-
-dl.text1 {
-    width: 74%;
-    margin: 0 auto;
+/* 文章inputbox見0出し */
+.text1 {
+    padding: 10px 0;
+    border-bottom: 1px dotted #676767;
+    
+    dt {
+        font-size: 1.6rem;
+    }
+    .red {
+        color: red;
+    }
+}
+/* 行数名 */
+.text1 dd {
+    font-size: 1.6rem;
     input {
-        width: 900px;
+        width: 80%;
+        height: 30px;
+        border-radius: 5px;
+        border: none;
+        background: #dbdbdb;
+        padding-left: 10px;
     }
 }
 
+/* エラーメッセージ */
+.error {
+    margin: 0 auto;
+    font-size: 1.4rem;
+    color: red;
+}
 
 //送信bottun
 .form-button {
@@ -214,5 +187,28 @@ dl.text1 {
             color: #fff;
             transition: .3s ease all
         }
+    }
+}
+
+/* スマホ表示 */
+@media screen and (max-width: 559px) {
+    .text1 dd input {
+            width: 80%;
+            height: 30px;
+            border-radius: 5px;
+            border: none;
+            background: #dbdbdb;
+            padding-left: 10px;
+    }
+}
+/* タブレット～PCまでの表示 */
+@media screen and (min-width: 560px) and (max-width: 960px) {
+    .text1 dd input {
+        width: 80%;
+        height: 30px;
+        border-radius: 5px;
+        border: none;
+        background: #dbdbdb;
+        padding-left: 10px;
     }
 }

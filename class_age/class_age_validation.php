@@ -14,9 +14,10 @@
 //非修飾形式
 namespace vendor\php_message\class_age\validation;
 class age_validation {
-
-    //値の存在チェック
-    //is_numeric等で数値であるかをチェックする
+    //文字数制限：3文字
+    const TEXT_COUNT_MAXT = 3;
+    //正規表現チェック：半角数字のみ
+    const TEXT_PATTERN = "/^[0-9]+$/";
     public function validation($val){
         //検索文字列 配列変数初期化
         $search = [];
@@ -53,7 +54,7 @@ class age_validation {
             return $check_flg;
         }
         */
-        
+
         //半角数字以外エラー
         $text_pattern_2 = '/^[0-9]+$/';
         if (!preg_match($text_pattern_2, $val)) {

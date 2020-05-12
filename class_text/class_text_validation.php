@@ -14,15 +14,14 @@
 //非修飾形式
 namespace vendor\php_message\class_text\validation;
 class text_validation {
+    //文字数制限:120文字まで
+    const TEXT_COUNT_MAX = 120;
 
-    //値の存在チェック
-    //is_numeric等で数値であるかをチェックする
     public function validation($text_array){      
         /*---------------------------------------------
         ・未定義の変数や配列の場合エラー -1
         ・文字数121以上はエラー:0
         ・上記以外画面遷移：1
-            }
         ---------------------------------------------*/
         //空文字、0も許容⇒完全にemptyだと0入力しているのに入力されていない判定になるため、一応許容
         foreach (['text_1','text_2','text_3','text_4'] as $i) {
@@ -32,14 +31,11 @@ class text_validation {
                 return $check_flg;
             }
         }
-        //文字数制限を設ける⇒一旦変数に代入、const用いて定数に変更する
-        $text_count = 120;
         foreach (['text_1','text_2','text_3','text_4'] as $i) {
             /* var_dump消し忘れない様に注意！！ */
-            //var_dump(count($text_array[$i]));
-            
+            //var_dump(count($text_array[$i]));    
             //文字数が120以上
-            if (mb_strlen($text_array[$i]) > $text_count) {
+            if (mb_strlen($text_array[$i]) > self::TEXT_COUNT_MAX) {
                 $check_flg = "0";
                 return $check_flg;
             }

@@ -13,8 +13,10 @@
 //非修飾形式
 namespace vendor\php_message\class_name\validation;
 class name_validation {
-
-    //値の存在チェック
+    //文字数制限：10文字まで
+    const TEXT_COUNT_MAX = 10;
+    //日本語(半角英数(大小)、半角数字、全角数字、「、」「。」ひらがな、カタカナ、漢字)のみ許可
+    const TEXT_PATTERN = "/^[ぁ-んァ-ヶーa-zA-Z0-9一０-９、。]|[\p{Han}]+$/u";
     public function validation($val){
         //値の初期化
         //現状配列でデータを比較しているが、マスタで管理にする。
@@ -51,14 +53,12 @@ class name_validation {
             return $check_flg;
         }
         //10文字以上の場合はエラー
-        $text_count = 10;
-        if (mb_strlen($val) > $text_count) {
+        if (mb_strlen($val) > self::TEXT_COUNT_MAX) {
             $check_flg = "-1";
             return $check_flg;
         }
         //日本語(半角英数(大小)、半角数字、全角数字、「、」「。」ひらがな、カタカナ、漢字)のみ許可
-        $text_pattern = '/^[ぁ-んァ-ヶーa-zA-Z0-9一０-９、。]|[\p{Han}]+$/u';
-        if (!preg_match($text_pattern, $val)) {
+        if (!preg_match(self::TEXT_PATTERN, $val)) {
             $check_flg = "0";
             return $check_flg;
         }
