@@ -71,7 +71,7 @@ section {
 }
 
 
-/* =============form(お問い合わせ)============= */
+/* =============form============= */
 .header-text {
     //ヘッダーのテキストを真ん中寄せ
     text-align: center;
@@ -81,8 +81,8 @@ section {
 .form {
     //フォーム～文字列すべてを真ん中寄せ
     text-align: center; 
-     
 }
+
 /* 名前inputboxの見出し */
 .name {
     padding: 10px 0;
@@ -109,6 +109,13 @@ section {
 .age {
     padding: 10px 0;
     border-bottom: 1px dotted #676767;
+    /* borderの長さ指定については一度ちゃんと調べる
+    &:befor {
+        content: "";
+        border-bottom: 1px dotted #676767;
+        width: 70%;;
+    }
+    */
     dt {
         font-size: 1.6rem;
     }
@@ -172,6 +179,7 @@ section {
     justify-content: center;
     margin: 20px auto 20px auto;
     input {
+        /*
         display: block;
         text-align: center;
         color: #444;
@@ -186,9 +194,104 @@ section {
             background-color: #353535;
             color: #fff;
             transition: .3s ease all
+        
+
+        }
+        */
+        font-size: 1.4em;
+        font-weight: bold;
+        padding: 10px 30px;
+        background-color: rgb(83, 132, 231);
+        color: #fff;
+        border-style: none;
+        box-shadow: 2px 2px 3px 1px #666;
+        -moz-box-shadow: 2px 2px 3px 1px #666;
+        -webkit-box-shadow: 2px 2px 3px 1px #666;
+        border-radius: 20px;
+        &:hover {
+            background-color: #24d;
+            color: #fff;
         }
     }
 }
+
+/* =============/form(index.php)============= */
+
+
+/* =============確認画面(confirm.php)============= */
+/* 確認画面 headerの指定 */
+/* スマホ、タブレット対応の文字の大きさ指定をする必要あり */
+.confirm-text {
+    font-size: 3.4rem;
+    padding-left: 30px;
+}
+
+/* 確認画面 入力値のスタイル指定 */
+.from-wrap {
+    font-size: 1.8rem;
+    padding-left: 30px;
+}
+
+.msg-confirm {
+    font-size: 3.0rem;
+    margin: 10px 0;
+}
+
+.msg-name {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.msg-text1 {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.msg-text2 {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.msg-text3 {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.msg-text4 {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.btn-wrap {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-left: 50px;
+    
+    .btn input {
+        margin-right: 20px;
+        font-size: 1.4em;
+        font-weight: bold;
+        padding: 10px 30px;
+        background-color: rgb(83, 132, 231);
+        color: #fff;
+        border-style: none;
+        box-shadow: 2px 2px 3px 1px #666;
+        -moz-box-shadow: 2px 2px 3px 1px #666;
+        -webkit-box-shadow: 2px 2px 3px 1px #666;
+        border-radius: 20px;
+        &:hover {
+            background-color: #24d;
+            color: #fff;
+        }
+    }
+
+}
+
+
+
+/* =============/確認画面(confirm.php)============= */
 
 /* スマホ表示 */
 @media screen and (max-width: 559px) {
@@ -200,6 +303,14 @@ section {
             background: #dbdbdb;
             padding-left: 10px;
     }
+    .msg-confirm {
+        font-size: 2.0rem;
+    }
+    .msg-name, .msg-text1, .msg-text2, .msg-text3,
+    .msg-text4 {
+        font-size: 1.2rem;
+    }
+
 }
 /* タブレット～PCまでの表示 */
 @media screen and (min-width: 560px) and (max-width: 960px) {
@@ -211,4 +322,13 @@ section {
         background: #dbdbdb;
         padding-left: 10px;
     }
+    .msg-confirm {
+        font-size: 2.4rem;
+    }
+    .msg-name, .msg-text1, .msg-text2, .msg-text3,
+    .msg-text4 {
+        font-size: 1.2rem;
+        max-width: 100%;
+    }
+
 }

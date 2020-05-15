@@ -66,7 +66,7 @@ section {
   line-height: 100px;
 }
 
-/* =============form(お問い合わせ)============= */
+/* =============form============= */
 .header-text {
   text-align: center;
   font-size: 2.4rem;
@@ -104,6 +104,13 @@ section {
 .age {
   padding: 10px 0;
   border-bottom: 1px dotted #676767;
+  /* borderの長さ指定については一度ちゃんと調べる
+    &:befor {
+        content: "";
+        border-bottom: 1px dotted #676767;
+        width: 70%;;
+    }
+    */
 }
 
 .age dt {
@@ -178,26 +185,131 @@ section {
 }
 
 .form-button input {
-  display: block;
-  text-align: center;
-  color: #444;
-  background-color: #dbdbdb;
-  cursor: pointer;
-  -webkit-transition: all .3s ease;
-  transition: all .3s ease;
-  width: 250px;
-  height: 40px;
-  border-radius: 50px;
+  /*
+        display: block;
+        text-align: center;
+        color: #444;
+        background-color: #dbdbdb;
+        cursor: pointer;
+        transition: all .3s ease;
+        width: 250px;
+        height: 40px;
+        border-radius: 50px;
+        &:hover{
+            background-color:transparent;
+            background-color: #353535;
+            color: #fff;
+            transition: .3s ease all
+        
+
+        }
+        */
+  font-size: 1.4em;
+  font-weight: bold;
+  padding: 10px 30px;
+  background-color: #5384e7;
+  color: #fff;
+  border-style: none;
+  box-shadow: 2px 2px 3px 1px #666;
+  -moz-box-shadow: 2px 2px 3px 1px #666;
+  -webkit-box-shadow: 2px 2px 3px 1px #666;
+  border-radius: 20px;
 }
 
 .form-button input:hover {
-  background-color: transparent;
-  background-color: #353535;
+  background-color: #24d;
   color: #fff;
-  -webkit-transition: .3s ease all;
-  transition: .3s ease all;
 }
 
+/* =============/form(index.php)============= */
+/* =============確認画面(confirm.php)============= */
+/* 確認画面 headerの指定 */
+/* スマホ、タブレット対応の文字の大きさ指定をする必要あり */
+.confirm-text {
+  font-size: 3.4rem;
+  padding-left: 30px;
+}
+
+/* 確認画面 入力値のスタイル指定 */
+.from-wrap {
+  font-size: 1.8rem;
+  padding-left: 30px;
+}
+
+.msg-confirm {
+  font-size: 3.0rem;
+  margin: 10px 0;
+}
+
+.msg-name {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.msg-text1 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.msg-text2 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.msg-text3 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.msg-text4 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.btn-wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 30px;
+  padding-left: 50px;
+}
+
+.btn-wrap .btn input {
+  margin-right: 20px;
+  font-size: 1.4em;
+  font-weight: bold;
+  padding: 10px 30px;
+  background-color: #5384e7;
+  color: #fff;
+  border-style: none;
+  box-shadow: 2px 2px 3px 1px #666;
+  -moz-box-shadow: 2px 2px 3px 1px #666;
+  -webkit-box-shadow: 2px 2px 3px 1px #666;
+  border-radius: 20px;
+}
+
+.btn-wrap .btn input:hover {
+  background-color: #24d;
+  color: #fff;
+}
+
+/* =============/確認画面(confirm.php)============= */
 /* スマホ表示 */
 @media screen and (max-width: 559px) {
   .text1 dd input {
@@ -207,6 +319,13 @@ section {
     border: none;
     background: #dbdbdb;
     padding-left: 10px;
+  }
+  .msg-confirm {
+    font-size: 2.0rem;
+  }
+  .msg-name, .msg-text1, .msg-text2, .msg-text3,
+  .msg-text4 {
+    font-size: 1.2rem;
   }
 }
 
@@ -219,6 +338,14 @@ section {
     border: none;
     background: #dbdbdb;
     padding-left: 10px;
+  }
+  .msg-confirm {
+    font-size: 2.4rem;
+  }
+  .msg-name, .msg-text1, .msg-text2, .msg-text3,
+  .msg-text4 {
+    font-size: 1.2rem;
+    max-width: 100%;
   }
 }
 /*# sourceMappingURL=style.css.map */

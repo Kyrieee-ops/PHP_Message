@@ -40,7 +40,7 @@ function h($str) {
           <p class="fadein txt07">Presented by <?php echo h($person_information['user_name']); ?></p>
           <p class="fadein txt08"><a href="index.php">戻る</a></p>
         </div>
-        </div>   
+      </div>   
     
 </body>
 </html>

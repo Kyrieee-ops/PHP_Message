@@ -64,9 +64,6 @@ $text_validate = new t_validate\validation\text_validation;
     //decodeするのであればまずはencodeしてから
     //calss_textに渡す為に、jsonでdecodeする。
 
-    //値が空ではない場合に次画面遷移なのでsession変数に値を格納
-    $_SESSION['person_information'] = $person_information;
-    $_SESSION['text_information'] = $text_information;
     /*
     $_SESSION['user_name'] = $_POST['user_name'];
     $_SESSION['age'] = $_POST['age'];
@@ -85,18 +82,29 @@ $text_validate = new t_validate\validation\text_validation;
  
  /*----------------------------------------
  check_flgの値によって画面遷移先を変える
- 1⇒message.phpへ
+ 1⇒confirm.phpへ(確認画面へ)
  ----------------------------------------*/
  if ($check_flg_name === "1" && $check_flg_age === "1" && $check_flg_text === "1") {
-    header('Location: message.php');
+    //値が空ではない場合に次画面遷移なのでsession変数に値を格納
+    $_SESSION['person_information'] = $person_information;
+    $_SESSION['text_information'] = $text_information;
+    header('Location: confirm.php');
     exit();
  }
+ //戻るボタンが押された場合にsession変数を保持させて、inputに入力値を表示
+ if (isset($_SESSION['person_information'],$_SESSION['text_information'])) {
+    $person_information = $_SESSION['person_information'];
+    $text_information = $_SESSION['text_information'];
+
+ }
+
  //エラーメッセージの定数
   const ERROR_MESSAGE_1 = "名前が入力されていません。"."<br>"."もしくは名前が10文字以上で入力されています";
   const ERROR_MESSAGE_2 = "不正な入力です。";
   const ERROR_MESSAGE_3 = "年齢が入力されていません。"."<br>"."もしくは年齢が3文字以上で入力されています。";
   const ERROR_MESSAGE_4 = "半角数字以外はエラーです。";
-  const ERROR_MESSAGE_5 = "120文字以内で入力してください。";
+  const ERROR_MESSAGE_5 = "文章の1行目が入力されていません";
+  const ERROR_MESSAGE_6 = "120文字以内で入力してください。";
 
 ?>
 
@@ -106,7 +114,7 @@ $text_validate = new t_validate\validation\text_validation;
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Sass/style.css">
-    <title>入力してください</title>
+    <title>メッセージ内容入力画面</title>
 </head>
 <body>
     
@@ -123,7 +131,7 @@ $text_validate = new t_validate\validation\text_validation;
                 <?php endif; ?>
                     <label for="lblname1"><dt>氏名<span class="red">*</span></dt></label>
                     <dd>
-                        <input id="lblname1" type="text" name="person_information[user_name]" placeholder="例：山田太郎" value="<?php echo h($person_information['user_name'])?>">
+                        <input id="lblname1" type="text"  maxlength="10" name="person_information[user_name]" placeholder="例：山田太郎" value="<?php echo h($person_information['user_name'])?>">
                     </dd>
                 </dl>
                 <!--/名前-->
@@ -145,33 +153,33 @@ $text_validate = new t_validate\validation\text_validation;
                 <dl class="text1">
                     <!--1行目-->
                     <?php if ($check_flg_text === "-1"):?>
-                        <p class="error"><?php echo ERROR_MESSAGE_1; ?></p>
-                    <?php elseif($check_flg_text === "0") : ?>
                         <p class="error"><?php echo ERROR_MESSAGE_5; ?></p>
+                    <?php elseif($check_flg_text === "0") : ?>
+                        <p class="error"><?php echo ERROR_MESSAGE_2; ?></p>
                     <?php endif; ?>
                     <label for="lblname3"><dt>表示するメッセージ1<span class="red">*</span></dt></label>
                     <dd>
-                        1行目：<input id="lblname3" type="text" name="text_information[text_1]" placeholder="" value="<?php echo h($person_information['text_1'])?>">
+                        1行目：<input id="lblname3" type="text" name="text_information[text_1]" placeholder="" value="<?php echo h($text_information['text_1'])?>">
                     </dd>
                     <!--2行目-->
                     <label for="lblname4"><dt>表示するメッセージ2</dt></label>
                     <dd>
-                        2行目：<input id="lblname4" type="text" name="text_information[text_2]" placeholder="" value="<?php echo h($person_information['text_2'])?>">
+                        2行目：<input id="lblname4" type="text" name="text_information[text_2]" placeholder="" value="<?php echo h($text_information['text_2'])?>">
                     </dd>
                     <!--3行目-->
                     <label for="lblname5"><dt>表示するメッセージ3</dt></label>
                     <dd>
-                        3行目：<input id="lblname5" type="text" name="text_information[text_3]" placeholder="" value="<?php echo h($person_information['text_3'])?>">
+                        3行目：<input id="lblname5" type="text" name="text_information[text_3]" placeholder="" value="<?php echo h($text_information['text_3'])?>">
                     </dd>
                     <!--4行目-->
                     <label for="lblname5"><dt>表示するメッセージ4
                         </dt></label>
                     <dd>
-                        4行目：<input id="lblname5" type="text" name="text_information[text_4]" placeholder="" value="<?php echo h($person_information['text_4'])?>">
+                        4行目：<input id="lblname5" type="text" name="text_information[text_4]" placeholder="" value="<?php echo h($text_information['text_4'])?>">
                     </dd>
                 </dl>
             <!--form-button-->
-            <section class="form-button"><input type="submit" maxlength="10" value="送信する">
+            <section class="form-button"><input type="submit" value="送信する">
             </section>
             <!--/form-button-->
             </form>
