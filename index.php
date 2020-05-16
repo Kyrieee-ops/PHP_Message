@@ -122,14 +122,14 @@ $text_validate = new t_validate\validation\text_validation;
         <h2 class="header-text">入力項目を入力してください</h2>
         <article class="form">
             <form class="content-wrapper">
-                <!--名前-->
+                <!--名前　ここは自分の名前が表示されるところ-->
                 <dl class="name">
                 <?php if ($check_flg_name === "-1"):?>
                     <p class="error"><?php echo ERROR_MESSAGE_1; ?></p>
                 <?php elseif($check_flg_name === "0") : ?>
                     <p class="error"><?php echo ERROR_MESSAGE_2; ?></p>
                 <?php endif; ?>
-                    <label for="lblname1"><dt>氏名<span class="red">*</span></dt></label>
+                    <label for="lblname1"><dt>ご自身の名前<span class="red">*</span></dt></label>
                     <dd>
                         <input id="lblname1" type="text"  maxlength="10" name="person_information[user_name]" placeholder="例：山田太郎" value="<?php echo h($person_information['user_name'])?>">
                     </dd>
@@ -159,23 +159,23 @@ $text_validate = new t_validate\validation\text_validation;
                     <?php endif; ?>
                     <label for="lblname3"><dt>表示するメッセージ1<span class="red">*</span></dt></label>
                     <dd>
-                        1行目：<input id="lblname3" type="text" name="text_information[text_1]" placeholder="" value="<?php echo h($text_information['text_1'])?>">
+                        1行目：<textarea id="lblname3" type="text" maxlength="120" name="text_information[text_1]" placeholder="" ><?php echo h($text_information['text_1'])?></textarea>
                     </dd>
                     <!--2行目-->
                     <label for="lblname4"><dt>表示するメッセージ2</dt></label>
                     <dd>
-                        2行目：<input id="lblname4" type="text" name="text_information[text_2]" placeholder="" value="<?php echo h($text_information['text_2'])?>">
+                        2行目：<textarea id="lblname4" type="text" maxlength="120" name="text_information[text_2]" placeholder="" ><?php echo h($text_information['text_2'])?></textarea>
                     </dd>
                     <!--3行目-->
                     <label for="lblname5"><dt>表示するメッセージ3</dt></label>
                     <dd>
-                        3行目：<input id="lblname5" type="text" name="text_information[text_3]" placeholder="" value="<?php echo h($text_information['text_3'])?>">
+                        3行目：<textarea id="lblname5" type="text" maxlength="120" name="text_information[text_3]" placeholder="" ><?php echo h($text_information['text_3'])?></textarea>
                     </dd>
                     <!--4行目-->
                     <label for="lblname5"><dt>表示するメッセージ4
                         </dt></label>
                     <dd>
-                        4行目：<input id="lblname5" type="text" name="text_information[text_4]" placeholder="" value="<?php echo h($text_information['text_4'])?>">
+                        4行目：<textarea id="lblname5" type="text" maxlength="120" name="text_information[text_4]" placeholder="" ><?php echo h($text_information['text_4'])?></textarea>
                     </dd>
                 </dl>
             <!--form-button-->

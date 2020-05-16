@@ -155,7 +155,7 @@ section {
 /* 行数名 */
 .text1 dd {
     font-size: 1.6rem;
-    input {
+    textarea {
         width: 80%;
         height: 30px;
         border-radius: 5px;
@@ -297,11 +297,12 @@ section {
 @media screen and (max-width: 559px) {
     .text1 dd input {
             width: 80%;
-            height: 30px;
+            height: 60px;
             border-radius: 5px;
             border: none;
             background: #dbdbdb;
             padding-left: 10px;
+            
     }
     .msg-confirm {
         font-size: 2.0rem;
@@ -316,11 +317,12 @@ section {
 @media screen and (min-width: 560px) and (max-width: 960px) {
     .text1 dd input {
         width: 80%;
-        height: 30px;
+        height: 60px;
         border-radius: 5px;
         border: none;
         background: #dbdbdb;
         padding-left: 10px;
+
     }
     .msg-confirm {
         font-size: 2.4rem;

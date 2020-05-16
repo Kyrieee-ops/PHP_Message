@@ -24,7 +24,7 @@ class text_validation {
         ・文字数121以上はエラー:0
         ・上記以外画面遷移：1
         ---------------------------------------------*/
-        //1行目が空ｄある場合、未入力エラー
+        //1行目が空である場合、未入力エラー
         if (empty($text_array['text_1'])) {
             $check_flg = "-1";
             return $check_flg;
@@ -44,6 +44,7 @@ class text_validation {
             //var_dump(count($text_array[$i]));    
             //文字数が120以上
             if (mb_strlen($text_array[$i]) > self::TEXT_COUNT_MAX) {
+                //echo $text_array[$i];
                 $check_flg = "0";
                 return $check_flg;
             }
