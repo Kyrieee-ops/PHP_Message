@@ -148,21 +148,31 @@ section {
     dt {
         font-size: 1.6rem;
     }
+    
     .red {
         color: red;
     }
 }
-/* 行数名 */
-.text1 dd {
-    font-size: 1.6rem;
-    textarea {
-        width: 80%;
-        height: 30px;
-        border-radius: 5px;
-        border: none;
-        background: #dbdbdb;
-        padding-left: 10px;
-    }
+/* 行数名 
+.text1 dd  {
+    //display: flex;
+}
+*/
+
+.text1 dd  {
+    font-size: 1.8rem;
+    //padding: 10px 0;
+    
+}
+
+.text1 textarea {
+    font-size: 1.8rem;
+    width: 80%;
+    height: 40px;
+    border-radius: 5px;
+    border: none;
+    background: #dbdbdb;
+    padding-left: 10px;
 }
 
 /* エラーメッセージ */
@@ -229,7 +239,18 @@ section {
 /* 確認画面 入力値のスタイル指定 */
 .from-wrap {
     font-size: 1.8rem;
-    padding-left: 30px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.confirm-contens {
+    background:  #F4FAFA;
+    dt {
+        //background: #333;
+        //color: #fff;
+        //太字指定
+        font-weight:  bold;
+    }
 }
 
 .msg-confirm {
@@ -244,22 +265,50 @@ section {
 
 .msg-text1 {
     display: flex;
+    margin-right: 20px;
     margin-bottom: 20px;
+    dt {
+        width: 16%;
+        dd {
+            width: 100%;
+        }
+    }
 }
 
 .msg-text2 {
     display: flex;
+    margin-right: 20px;
     margin-bottom: 20px;
+    dt {
+        width: 16%;
+        dd {
+            width: 100%;
+        }
+    }
 }
 
 .msg-text3 {
     display: flex;
+    margin-right: 20px;
     margin-bottom: 20px;
+    dt {
+        width: 16%;
+        dd {
+            width: 100%;
+        }
+    }
 }
 
 .msg-text4 {
     display: flex;
+    margin-right: 20px;
     margin-bottom: 20px;
+    dt {
+        width: 16%;
+        dd {
+            width: 100%;
+        }
+    }
 }
 
 .btn-wrap {
@@ -295,15 +344,19 @@ section {
 
 /* スマホ表示 */
 @media screen and (max-width: 559px) {
-    .text1 dd input {
-            width: 80%;
-            height: 60px;
-            border-radius: 5px;
-            border: none;
-            background: #dbdbdb;
-            padding-left: 10px;
-            
-    }
+    .text1 dd {
+        font-size: 1.8rem;
+        width: 100%;
+}   
+    .text1 textarea {
+        width: 80%;
+        height: 70px;
+        //border-radius: 5px;
+        border: none;
+        background: #dbdbdb;
+        padding-left: 10px;
+        
+}
     .msg-confirm {
         font-size: 2.0rem;
     }
@@ -311,13 +364,18 @@ section {
     .msg-text4 {
         font-size: 1.2rem;
     }
-
+    /*
+    .msg-text1, .msg-text2, .msg-text3,
+    .msg-text4 dt {
+        width: 130%;
+    }
+    */
 }
 /* タブレット～PCまでの表示 */
 @media screen and (min-width: 560px) and (max-width: 960px) {
-    .text1 dd input {
+    .text1 dd textarea {
         width: 80%;
-        height: 60px;
+        height: 65px;
         border-radius: 5px;
         border: none;
         background: #dbdbdb;

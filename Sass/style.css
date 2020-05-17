@@ -153,14 +153,19 @@ section {
   color: red;
 }
 
-/* 行数名 */
+/* 行数名 
+.text1 dd  {
+    //display: flex;
+}
+*/
 .text1 dd {
-  font-size: 1.6rem;
+  font-size: 1.8rem;
 }
 
-.text1 dd textarea {
+.text1 textarea {
+  font-size: 1.8rem;
   width: 80%;
-  height: 30px;
+  height: 40px;
   border-radius: 5px;
   border: none;
   background: #dbdbdb;
@@ -233,7 +238,16 @@ section {
 /* 確認画面 入力値のスタイル指定 */
 .from-wrap {
   font-size: 1.8rem;
-  padding-left: 30px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.confirm-contens {
+  background: #F4FAFA;
+}
+
+.confirm-contens dt {
+  font-weight: bold;
 }
 
 .msg-confirm {
@@ -252,28 +266,64 @@ section {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  margin-right: 20px;
   margin-bottom: 20px;
+}
+
+.msg-text1 dt {
+  width: 16%;
+}
+
+.msg-text1 dt dd {
+  width: 100%;
 }
 
 .msg-text2 {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  margin-right: 20px;
   margin-bottom: 20px;
+}
+
+.msg-text2 dt {
+  width: 16%;
+}
+
+.msg-text2 dt dd {
+  width: 100%;
 }
 
 .msg-text3 {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  margin-right: 20px;
   margin-bottom: 20px;
+}
+
+.msg-text3 dt {
+  width: 16%;
+}
+
+.msg-text3 dt dd {
+  width: 100%;
 }
 
 .msg-text4 {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  margin-right: 20px;
   margin-bottom: 20px;
+}
+
+.msg-text4 dt {
+  width: 16%;
+}
+
+.msg-text4 dt dd {
+  width: 100%;
 }
 
 .btn-wrap {
@@ -312,10 +362,13 @@ section {
 /* =============/確認画面(confirm.php)============= */
 /* スマホ表示 */
 @media screen and (max-width: 559px) {
-  .text1 dd input {
+  .text1 dd {
+    font-size: 1.8rem;
+    width: 100%;
+  }
+  .text1 textarea {
     width: 80%;
-    height: 60px;
-    border-radius: 5px;
+    height: 70px;
     border: none;
     background: #dbdbdb;
     padding-left: 10px;
@@ -327,13 +380,19 @@ section {
   .msg-text4 {
     font-size: 1.2rem;
   }
+  /*
+    .msg-text1, .msg-text2, .msg-text3,
+    .msg-text4 dt {
+        width: 130%;
+    }
+    */
 }
 
 /* タブレット～PCまでの表示 */
 @media screen and (min-width: 560px) and (max-width: 960px) {
-  .text1 dd input {
+  .text1 dd textarea {
     width: 80%;
-    height: 60px;
+    height: 65px;
     border-radius: 5px;
     border: none;
     background: #dbdbdb;

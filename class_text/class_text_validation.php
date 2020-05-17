@@ -29,8 +29,7 @@ class text_validation {
             $check_flg = "-1";
             return $check_flg;
         }
-
-
+        
         //空文字、0も許容⇒完全にemptyだと0入力しているのに入力されていない判定になるため、一応許容
         foreach (['text_1','text_2','text_3','text_4'] as $i) {
             //未定義の変数や配列の場合にエラーフラグを立てる
@@ -39,6 +38,7 @@ class text_validation {
                 return $check_flg;
             }
         }
+        
         foreach (['text_1','text_2','text_3','text_4'] as $i) {
             /* var_dump消し忘れない様に注意！！ */
             //var_dump(count($text_array[$i]));    

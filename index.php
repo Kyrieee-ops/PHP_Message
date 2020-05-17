@@ -155,28 +155,28 @@ $text_validate = new t_validate\validation\text_validation;
                     <?php if ($check_flg_text === "-1"):?>
                         <p class="error"><?php echo ERROR_MESSAGE_5; ?></p>
                     <?php elseif($check_flg_text === "0") : ?>
-                        <p class="error"><?php echo ERROR_MESSAGE_2; ?></p>
+                        <p class="error"><?php echo ERROR_MESSAGE_6; ?></p>
                     <?php endif; ?>
                     <label for="lblname3"><dt>表示するメッセージ1<span class="red">*</span></dt></label>
-                    <dd>
-                        1行目：<textarea id="lblname3" type="text" maxlength="120" name="text_information[text_1]" placeholder="" ><?php echo h($text_information['text_1'])?></textarea>
-                    </dd>
+                    <dd>1行目：</dd>
+                    <textarea id="lblname3" type="text" maxlength="120" name="text_information[text_1]" placeholder="" ><?php echo h($text_information['text_1'])?></textarea>
+                    
                     <!--2行目-->
                     <label for="lblname4"><dt>表示するメッセージ2</dt></label>
-                    <dd>
-                        2行目：<textarea id="lblname4" type="text" maxlength="120" name="text_information[text_2]" placeholder="" ><?php echo h($text_information['text_2'])?></textarea>
-                    </dd>
+                    <dd>2行目：</dd>
+                    <textarea id="lblname4" type="text" maxlength="120" name="text_information[text_2]" placeholder="" ><?php echo h($text_information['text_2'])?></textarea>
+                    
                     <!--3行目-->
                     <label for="lblname5"><dt>表示するメッセージ3</dt></label>
-                    <dd>
-                        3行目：<textarea id="lblname5" type="text" maxlength="120" name="text_information[text_3]" placeholder="" ><?php echo h($text_information['text_3'])?></textarea>
-                    </dd>
+                    <dd>3行目：</dd>
+                    <textarea id="lblname5" type="text" maxlength="120" name="text_information[text_3]" placeholder="" ><?php echo h($text_information['text_3'])?></textarea>
+                    
                     <!--4行目-->
                     <label for="lblname5"><dt>表示するメッセージ4
                         </dt></label>
-                    <dd>
-                        4行目：<textarea id="lblname5" type="text" maxlength="120" name="text_information[text_4]" placeholder="" ><?php echo h($text_information['text_4'])?></textarea>
-                    </dd>
+                    <dd>4行目：</dd>
+                    <textarea id="lblname5" type="text" maxlength="120" name="text_information[text_4]" placeholder="" ><?php echo h($text_information['text_4'])?></textarea>
+                    
                 </dl>
             <!--form-button-->
             <section class="form-button"><input type="submit" value="送信する">
